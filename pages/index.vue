@@ -10,5 +10,7 @@
 </template>
 
 <script setup>
-  const { data: products } = await useFetch('http://191.96.251.66:1337/api/products')
+const { data: products } = await useFetch(
+  "http://191.96.251.66:1337/api/products"
+);
 </script>

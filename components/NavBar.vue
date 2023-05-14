@@ -23,7 +23,7 @@
 </template>
 
 <style scoped>
-/* .router-link-active {
+.router-link-active {
   @apply text-brand-orange;
-} */
+}
 </style>
