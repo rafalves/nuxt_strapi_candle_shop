@@ -27,7 +27,7 @@
         <Heading tag="h2" font-style="h2">Other sick wicks</Heading>
       </div>
       <div class="grid grid-cols-2 gap-12 md:grid-cols-4">
-        <product-teaser
+        <ProductTeaser
           class="col-span-1"
           v-for="product in products.data"
           :key="product.id"
@@ -45,17 +45,11 @@
 const route = useRoute();
 const config = useRuntimeConfig();
 const quantity = ref(1);
+
 const { data: products } = await useFetch(
   `${config.API_URL}/api/products?populate=*`
 );
 const { data: product } = await useFetch(
   `${config.API_URL}/api/products/${route.params.id}?populate=*`
 );
-const imageUrl = computed(() => {
-  if (!product.value.data) {
-    return null;
-  }
-
-  return `${config.API_URL}${product.value.data.attributes.image.data.attributes.url}`;
-});
 </script>

@@ -28,6 +28,7 @@
         </div>
       </div>
     </section>
+
     <section class="mb-28">
       <Container>
         <div class="w-full mx-auto mb-12 text-center md:w-2/3 lg:w-1/3">
@@ -40,15 +41,26 @@
             pyromaniac’s itch to burn things in a safe way.
           </p>
         </div>
+
+        <div class="grid grid-cols-2 gap-12 md:grid-cols-4">
+          <ProductTeaser
+            class="col-span-1"
+            v-for="product in products.data"
+            :key="product.id"
+            :product="product"
+          />
+        </div>
+
         <div class="flex justify-center mt-10">
           <Btn theme="secondary">View all the sick wicks</Btn>
         </div>
       </Container>
     </section>
+
     <div v-for="product in products.data" :key="product.id">
-      <NuxtLink :to="`/products/${product.id}`">
+      <NuxtLink :to="`/${product.id}`">
         <h1 class="font-bold">{{ product.attributes.title }}</h1>
-        {{ product.attributes.description }}
+        {{ product.attributes.images.data[0].attributes.formats.medium.url }}
       </NuxtLink>
     </div>
   </div>
@@ -56,10 +68,20 @@
 
 <script setup>
 import HeaderBg from "~/assets/images/header-bg.jpg";
+const config = useRuntimeConfig();
 
 const { data: products } = await useFetch(
-  "http://191.96.251.66:1337/api/products"
+  `${config.public.apiBase}/api/products?populate=*`
 );
+console.log("debug url " + `${config.public.apiBase}`);
+// console.log("a - " + config);
+// console.log("b - " + config.public.apiBase);
+// console.log("c - " + process.env.NUXT_PUBLIC_API_BASE);
+// console.log("d - " + process.env.API_URL);
+// console.log("e - " + `${config.public.apiBase}/api/products?populate=*`);
+// // const { data: products } = await useFetch(
+// //   `${config.API_URL}/api/products?populate=*`
+// // );
 </script>
 
 <style scoped>
