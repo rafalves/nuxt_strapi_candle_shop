@@ -47,9 +47,9 @@ const config = useRuntimeConfig();
 const quantity = ref(1);
 
 const { data: products } = await useFetch(
-  `${config.API_URL}/api/products?populate=*`
+  `${config.public.apiBase}/api/products?populate=*`
 );
 const { data: product } = await useFetch(
-  `${config.API_URL}/api/products/${route.params.id}?populate=*`
+  `${config.public.apiBase}/api/products/${route.params.id}?populate=*`
 );
 </script>

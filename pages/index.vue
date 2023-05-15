@@ -56,24 +56,18 @@
         </div>
       </Container>
     </section>
-
-    <div v-for="product in products.data" :key="product.id">
-      <NuxtLink :to="`/${product.id}`">
-        <h1 class="font-bold">{{ product.attributes.title }}</h1>
-        {{ product.attributes.images.data[0].attributes.formats.medium.url }}
-      </NuxtLink>
-    </div>
   </div>
 </template>
 
 <script setup>
 import HeaderBg from "~/assets/images/header-bg.jpg";
+
 const config = useRuntimeConfig();
 
 const { data: products } = await useFetch(
   `${config.public.apiBase}/api/products?populate=*`
 );
-console.log("debug url " + `${config.public.apiBase}`);
+// console.log("debug url " + `${config.public.apiBase}`);
 // console.log("a - " + config);
 // console.log("b - " + config.public.apiBase);
 // console.log("c - " + process.env.NUXT_PUBLIC_API_BASE);
