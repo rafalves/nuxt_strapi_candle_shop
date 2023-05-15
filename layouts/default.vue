@@ -4,6 +4,7 @@
     <div class="pt-24 bg-brand-beige-300">
       <slot />
     </div>
+    <Footer />
   </div>
 </template>
 
