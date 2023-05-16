@@ -29,33 +29,31 @@
       </div>
     </section>
 
-    <section class="mb-28">
-      <Container>
-        <div class="w-full mx-auto mb-12 text-center md:w-2/3 lg:w-1/3">
-          <Heading tag="h2" font-style="h3">Our Candles</Heading>
-          <Heading tag="h3" font-style="h2" class="mb-2"
-            >Show me the sick wicks</Heading
-          >
-          <p>
-            All our candles our hand made and 100% verified to satisfy any
-            pyromaniac’s itch to burn things in a safe way.
-          </p>
-        </div>
+    <Container>
+      <div class="w-full mx-auto mb-12 text-center md:w-2/3 lg:w-1/3">
+        <Heading tag="h2" font-style="h3">Our Candles</Heading>
+        <Heading tag="h3" font-style="h2" class="mb-2"
+          >Show me the sick wicks</Heading
+        >
+        <p>
+          All our candles our hand made and 100% verified to satisfy any
+          pyromaniac’s itch to burn things in a safe way.
+        </p>
+      </div>
 
-        <div class="grid grid-cols-2 gap-12 md:grid-cols-4">
-          <ProductTeaser
-            class="col-span-1"
-            v-for="product in products.data"
-            :key="product.id"
-            :product="product"
-          />
-        </div>
+      <div class="grid grid-cols-2 gap-12 md:grid-cols-4">
+        <ProductTeaser
+          class="col-span-1"
+          v-for="product in products.data"
+          :key="product.id"
+          :product="product"
+        />
+      </div>
 
-        <div class="flex justify-center mt-10">
-          <Btn theme="secondary">View all the sick wicks</Btn>
-        </div>
-      </Container>
-    </section>
+      <div class="flex justify-center pt-12 pb-32">
+        <Btn theme="secondary">View all the sick wicks</Btn>
+      </div>
+    </Container>
   </div>
 </template>
 

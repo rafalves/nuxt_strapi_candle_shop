@@ -17,7 +17,16 @@
 
         <div class="flex items-center">
           <input-field type="number" class="mr-4" min="1" v-model="quantity" />
-          <Btn @update:modelValue="pageTitle = $event">Add to basket</Btn>
+          <Btn
+            class="snipcart-add-item"
+            :data-item-id="product.data.id"
+            :data-item-price="product.data.attributes.price"
+            :data-item-description="product.data.attributes.description"
+            :data-item-name="product.data.attributes.title"
+            :data-item-image="imageUrl"
+            :data-item-quantity="quantity"
+            >Add to basket</Btn
+          >
         </div>
       </div>
     </Container>
@@ -46,10 +55,18 @@ const route = useRoute();
 const config = useRuntimeConfig();
 const quantity = ref(1);
 
-const { data: products } = await useFetch(
-  `${config.public.apiBase}/api/products?populate=*`
-);
 const { data: product } = await useFetch(
   `${config.public.apiBase}/api/products/${route.params.id}?populate=*`
 );
+
+const { data: products } = await useFetch(
+  `${config.public.apiBase}/api/products?populate=*`
+);
+
+const imageUrl = computed(() => {
+  if (!product._rawValue.data) {
+    return null;
+  }
+  return `${config.public.apiBase}${product._rawValue.data.attributes.images.data[0].attributes.formats.medium.url}`;
+});
 </script>
