@@ -51,6 +51,7 @@
 </template>
 
 <script setup>
+const qs = require("qs");
 const route = useRoute();
 const config = useRuntimeConfig();
 const quantity = ref(1);

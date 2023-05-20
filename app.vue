@@ -9,4 +9,8 @@
 body {
   @apply text-brand-grey;
 }
+
+.snipcart-modal__container {
+  z-index: 100;
+}
 </style>
